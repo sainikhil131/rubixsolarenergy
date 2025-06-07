@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubix Solar Energy - Residential Solar Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--rubix-black);
+            z-index: 100; /* Increased to ensure header stays above all elements */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, #fff 55%, transparent 45%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 60px;  /* Reduced padding */
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 550px;  /* Slightly reduced width */
+            position: relative;
+            z-index: 2;
+            padding: 2rem;  /* Reduced padding */
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;  /* Reduced from 4.5rem */
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--rubix-green), var(--rubix-yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, var(--rubix-green), var(--rubix-yellow));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-content h1:hover::after {
+            transform: scaleX(1);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;  /* Reduced from 1.25rem */
+            color: #4B5563;
+            margin-bottom: 2rem;  /* Reduced spacing */
+        }
+
+        #quoteForm {
+            background: #ffffff;
+            padding: 1.5rem;  /* Reduced padding */
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        #quoteForm .form-input {
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            padding: 0.75rem 1rem;  /* Reduced padding */
+            font-size: 0.95rem;  /* Reduced font size */
+            color: #4B5563;
+            border-radius: 6px;
+        }
+
+        #quoteForm .form-input:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 85vh;
+            object-fit: cover;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .form-input {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add animation for the quote form */
+        #quoteForm {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .procedure-card, .benefit-card, .feature-card, .roi-calculator, .contact-form {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .procedure-card::before, .benefit-card::before, .feature-card::before, .roi-calculator::before, .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--rubix-green), var(--rubix-yellow));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+        .procedure-card:hover, .benefit-card:hover, .feature-card:hover, .roi-calculator:hover, .contact-form:hover {
+            transform: translateY(-10px);
+            border-color: var(--rubix-yellow);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+        .procedure-card:hover::before, .benefit-card:hover::before, .feature-card:hover::before, .roi-calculator:hover::before, .contact-form:hover::before {
+            opacity: 0.05;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        .scale-in {
+            animation: scaleIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                color: #d1d5db;
+            }
+            to { 
+                opacity: 1;
+                color: #111827;
+            }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                flex-direction: column;
+                margin-top: 1rem;
+                gap: 0.5rem;
+            }
+            nav ul li a {
+                font-size: 1rem;
+            }
+            .hero-section {
+                margin-top: 120px; /* Adjust margin for smaller screens */
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;  /* Reduced mobile font size */
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .hero-section .container {
+                flex-direction: column;
+            }
+            .hero-content {
+                margin-right: 0;
+                margin-bottom: 2rem;
+                max-width: 100%;
+            }
+            .hero-image {
+                position: static;
+                transform: none;
+                width: 100%;
+                max-height: 300px;
+                margin-top: 2rem;
+            }
+            .procedure-card, .benefit-card, .feature-card, .roi-calculator, .contact-form {
+                margin-bottom: 1rem;
+            }
+            .contact-section .grid, .roi-section .grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-section img, .roi-section img {
+                margin-bottom: 2rem;
+            }
+        }
+
+        .logo {
+            width: 150px;
+            height: 50px;
+            object-fit: contain;
+            margin-right: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        :root {
+            --rubix-yellow: #FDB813;
+            --rubix-green: #4CAF50;
+            --rubix-black: #1F2937;
+        }
+
+        nav ul li a {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--rubix-yellow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo + h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--rubix-yellow);
+            margin-left: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            list-style: none;
+        }
+
+        nav ul li a {
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--rubix-green), var(--rubix-yellow));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--rubix-green);
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-actions .contact-btn {
+            font-size: 0.85rem;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+            height: auto;
+            min-height: auto;
+        }
+
+        .nav-actions .phone-number {
+            font-size: 0.85rem;
+        }
+
+        /* Update the nav-actions and phone-number styles */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phone-number {
+            color: white;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        .phone-number::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--rubix-green), var(--rubix-yellow));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .phone-number:hover {
+            color: var(--rubix-yellow);
+        }
+
+        .phone-number:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        @media (min-width: 768px) {
+            .nav-actions .contact-btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1.25rem;
+            }
+            
+            .nav-actions .phone-number {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section .grid, .roi-section .grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-section img, .roi-section img {
+                height: 400px;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .section-title {
+            display: inline-block;
+            position: relative;
+            color: var(--rubix-black);
+            transition: color 0.3s ease;
+            padding-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--rubix-yellow);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .procedure-title-container, .benefits-title-container, .why-choose-us-title-container, .roi-title-container, .contact-title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--rubix-green), var(--rubix-yellow));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .section-title:hover {
+            color: var(--rubix-green);
+        }
+
+        .section-title:hover::before {
+            transform: scaleX(0.5);
+            transform-origin: left;
+        }
+
+        .section-title:hover::after {
+            transform: scaleX(0.5);
+            transform-origin: right;
+        }
+
+        .aspect-w-16 {
+            position: relative;
+            padding-bottom: 56.25%;
+        }
+
+        .aspect-w-16 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+        }
+
+        .video-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .quote-btn {
+            background: linear-gradient(45deg, #4CAF50, #FDB813);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-height: 48px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .quote-btn:hover {
+            padding: 10px 24px;
+            transform: translateY(-2px);
+            background: transparent;
+            border: 2px solid #FDB813;
+            color: #4CAF50;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        :root {
+            --rubix-yellow: #FDB813;
+            --rubix-green: #4CAF50;
+            --rubix-black: #1F2937;
+        }
+
+        .procedure-section, .benefits-section, .why-choose-us-section, .roi-section, .contact-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 4rem 0;
+        }
+
+        .procedure-title, .benefits-title, .why-choose-us-title, .roi-title, .contact-title {
+            background: linear-gradient(45deg, var(--rubix-green), var(--rubix-yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .procedure-title::after, .benefits-title::after, .why-choose-us-title::after, .roi-title::after, .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(45deg, var(--rubix-green), var(--rubix-yellow));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .procedure-title:hover::after, .benefits-title:hover::after, .why-choose-us-title:hover::after, .roi-title:hover::after, .contact-title:hover::after {
+            transform: scaleX(1);
+        }
+
+        .procedure-icon, .benefit-icon, .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--rubix-green);
+            transition: transform 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+        }
+
+        .procedure-card:hover .procedure-icon, .feature-card:hover .benefit-card:hover .benefit-icon {
+            transform: scale(1.1) rotate(10deg);
+            color: var(--rubix-yellow);
+        }
+
+        .procedure-link, .benefit-link, .feature-link {
+            color: var(--rubix-green);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .procedure-link:hover, .benefit-link:hover, .feature-link:hover {
+            color: var(--rubix-yellow);
+            gap: 1rem;
+        }
+
+        /* Update these mobile menu styles in your <style> section */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.5rem;
+            }
+
+            .nav-links {
+                display: none; /* Hide desktop nav */
+            }
+
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--rubix-black);
+                padding: 1rem;
+                z-index: 99;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .mobile-menu.show {
+                display: block;
+            }
+
+            .mobile-menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .mobile-menu ul li {
+                padding: 0.5rem 0;
+            }
+
+            .mobile-menu ul li a {
+                color: white;
+                display: block;
+                padding: 0.75rem 1rem;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .nav-actions {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .contact-btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .phone-number {
+                display: block;
+                text-align: center;
+                padding: 0.5rem;
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="shadow">
+        <nav class="container mx-auto">
+            <div class="flex items-center justify-between w-full px-4">
+                <div class="flex items-center">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Rubix Solar Energy Logo" class="logo">
+                    <h1 class="text-white">RUBIX SOLAR ENERGY</h1>
+                </div>
+                
+                <button class="mobile-menu-btn md:hidden" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex space-x-6">
+                    <li><a href="#home" class="text-white hover:text-yellow-400">Home</a></li>
+                    <li><a href="#residential" class="text-white hover:text-yellow-400">Residential</a></li>
+                    <li><a href="#roi" class="text-white hover:text-yellow-400">ROI Calculator</a></li>
+                    <li><a href="#contact" class="text-white hover:text-yellow-400">Contact</a></li>
+                </ul>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <span class="phone-number">call us: 8520087081</span>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="mobile-menu md:hidden">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#residential">Residential</a></li>
+                    <li><a href="#roi">ROI Calculator</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#contact" class="contact-btn w-full text-center block mb-2">Contact Us</a>
+                    <span class="phone-number block text-center text-white">8520087081</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="container mx-auto px-6">
+            <div class="hero-content fade-in">
+                <h1 class="text-5xl font-bold mb-6">Switch to Solar Energy Today</h1>
+                <p class="text-xl text-gray-600 mb-8 animate-pulse">Save money and help the environment with our residential solar solutions.</p>
+                <form id="quoteForm" action="/send-cost" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" 
+                           name="name" 
+                           placeholder="Name" 
+                           class="form-input p-3 border rounded-lg shadow-sm hover:shadow-md transition-all duration-300" 
+                           required>
+                    <input type="email" 
+                           name="email" 
+                           placeholder="Email" 
+                           class="form-input p-3 border rounded-lg shadow-sm hover:shadow-md transition-all duration-300" 
+                           required>
+                    <select name="capacity" 
+                            class="form-input p-3 border rounded-lg shadow-sm hover:shadow-md transition-all duration-300" 
+                            title="Select system capacity">
+                        <option value="6 KW">6 KW</option>
+                        <option value="1 KW">1 KW</option>
+                        <option value="2 KW">2 KW</option>
+                        <option value="3 KW">3 KW</option>
+                        <option value="4 KW">4 KW</option>
+                        <option value="5 KW">5 KW</option>
+                        <option value="7 KW">7 KW</option>
+                        <option value="8 KW">8 KW</option>
+                        <option value="9 KW">9 KW</option>
+                        <option value="10 KW">10 KW</option>
+                    </select>
+                    <button type="submit" 
+                            class="quote-btn w-full transform hover:scale-105 transition-all duration-300">
+                        Get a Free Quote
+                    </button>
+                </form>
+                <div id="quoteStatus" class="mt-4 text-center hidden">
+                    <p class="text-green-500 quote-success-message hidden animate-bounce">Quote sent successfully! Please check your email.</p>
+                    <p class="text-red-500 quote-error-message hidden animate-bounce">Error sending quote. Please try again.</p>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+            <img src="{{ url_for('static', filename='solar.png') }}" 
+                 alt="Solar panels installed on modern home roof" 
+                 class="hero-image slide-up">
+        </div>
+    </section>
+
+    <section id="residential" class="procedure-section">
+        <div class="container mx-auto px-6">
+            <div class="procedure-title-container">
+                <h2 class="text-4xl font-bold procedure-title">Our Three Step Procedure</h2>
+                <p class="text-center text-gray-600 mb-12">Let's Get Started</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="procedure-card">
+                    <div class="relative z-10">
+                        <i class="fas fa-comments procedure-icon"></i>
+                        <h3 class="text-xl font-semibold mb-4">1. Consultation</h3>
+                        <p class="text-gray-600 mb-4">Our team will conduct a thorough assessment of your energy needs.</p>
+                    </div>
+                </div>
+
+                <div class="procedure-card">
+                    <div class="relative z-10">
+                        <i class="fas fa-solar-panel procedure-icon"></i>
+                        <h3 class="text-xl font-semibold mb-4">2. Installation</h3>
+                        <p class="text-gray-600 mb-4">Our expert technicians will install your solar panels with precision and care.</p>
+                    </div>
+                </div>
+
+                <div class="procedure-card">
+                    <div class="relative z-10">
+                        <i class="fas fa-chart-line procedure-icon"></i>
+                        <h3 class="text-xl font-semibold mb-4">3. Monitoring</h3>
+                        <p class="text-gray-600 mb-4">We'll ensure your system is running efficiently for years to come.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container mx-auto px-6">
+            <div class="benefits-title-container">
+                <h2 class="text-4xl font-bold benefits-title">Benefits of Going Solar</h2>
+                <p class="text-center text-gray-600 mb-12">Advantages</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="benefit-card">
+                    <div class="relative z-10">
+                        <i class="fas fa-piggy-bank benefit-icon"></i>
+                        <h3 class="text-xl font-semibold mb-4">Cost Savings</h3>
+                        <p class="text-gray-600 mb-4">Enjoy significant savings on your energy bills.</p>
+                        <a href="#" class="benefit-link mt-2">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="relative z-10">
+                        <i class="fas fa-leaf benefit-icon"></i>
+                        <h3 class="text-xl font-semibold mb-4">Environmental Impact</h3>
+                        <p class="text-gray-600 mb-4">Reduce your carbon footprint and help the planet.</p>
+                        <a href="#" class="benefit-link mt-2">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="relative z-10">
+                        <i class="fas fa-bolt benefit-icon"></i>
+                        <h3 class="text-xl font-semibold mb-4">Energy Independence</h3>
+                        <p class="text-gray-600 mb-4">Gain independence from traditional energy sources.</p>
+                        <a href="#" class="benefit-link mt-2">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us-section">
+        <div class="container mx-auto px-6">
+            <div class="why-choose-us-title-container">
+                <h2 class="text-4xl font-bold why-choose-us-title">Why Choose Us?</h2>
+                <p class="text-center text-gray-600 mb-12">Experience excellence in solar solutions with our dedicated team.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="transform transition-transform duration-500 hover:scale-105">
+                    <img src="{{ url_for('static', filename='solar2.png') }}" alt="Solar panels installed on modern home roof" class="rounded-2xl shadow-2xl w-full h-[300px] object-cover hover:shadow-xl transition-shadow duration-300">
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="feature-card">
+                            <div class="relative z-10">
+                                <i class="fas fa-city feature-icon"></i>
+                                <p class="text-gray-600 mb-4">Creating quality urban lifestyles, building stronger communities</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="relative z-10">
+                                <i class="fas fa-medal feature-icon"></i>
+                                <p class="text-gray-600 mb-4">Experienced</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="relative z-10">
+                                <i class="fas fa-shield-alt feature-icon"></i>
+                                <p class="text-gray-600 mb-4">Reliable</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="relative z-10">
+                                <i class="fas fa-leaf feature-icon"></i>
+                                <p class="text-gray-600 mb-4">Sustainable</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="relative z-10">
+                                <i class="fas fa-tags feature-icon"></i>
+                                <p class="text-gray-600 mb-4">Affordable</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="relative z-10">
+                                <i class="fas fa-handshake feature-icon"></i>
+                                <p class="text-gray-600 mb-4">Trustworthy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roi" class="roi-section">
+        <div class="container mx-auto px-6">
+            <div class="roi-title-container">
+                <h2 class="text-4xl font-bold roi-title">Calculate Your Solar Savings in Telangana</h2>
+                <p class="text-center text-gray-600 mb-12">Estimate your savings and income with a 3 kW solar system</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="roi-calculator">
+                    <div class="relative z-10">
+                        <form id="roi-form">
+                            <div class="mb-6">
+                                <label for="consumption" class="block text-gray-700 mb-2">Your Monthly Electricity Consumption (units)</label>
+                                <input type="number" id="consumption" name="consumption" placeholder="e.g., 150" class="form-input w-full p-3 border rounded-lg" required>
+                            </div>
+                            <button type="button" onclick="calculateROI()" class="quote-btn w-full">Calculate</button>
+                        </form>
+                        <div id="roi-result" class="mt-6 text-gray-800 relative z-10"></div>
+                    </div>
+                </div>
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video 
+                            controls
+                            autoplay
+                            muted
+                            loop>
+                            <source src="{{ url_for('static', filename='solarvid.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container mx-auto px-6">
+            <div class="contact-title-container">
+                <h2 class="text-4xl font-bold contact-title">Contact Us</h2>
+                <p class="text-center text-gray-600 mb-12">Straight from our desk, to your inbox. Subscribe to our latest upcoming newsletter of solar panel</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="transform transition-transform duration-500 hover:scale-105">
+                    <img src="{{ url_for('static', filename='solar3.png') }}" 
+                         alt="Solar panels installation team" 
+                         class="rounded-2xl shadow-2xl w-full h-[400px] object-cover hover:shadow-xl transition-shadow duration-300">
+                </div>
+                
+                <div class="contact-form">
+                    <div class="relative z-10">
+                        <form id="contactForm" class="space-y-6">
+                            <div class="relative">
+                                <input type="text" 
+                                       name="full_name" 
+                                       placeholder="Your Full Name" 
+                                       class="w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300"
+                                       required>
+                            </div>
+                            
+                            <div class="relative">
+                                <input type="text" 
+                                       name="contact_number" 
+                                       placeholder="Your Contact Number" 
+                                       class="w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300"
+                                       required>
+                            </div>
+
+                            <div class="relative">
+                                <input type="email" 
+                                       name="email" 
+                                       placeholder="Your Email" 
+                                       class="w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300"
+                                       required>
+                            </div>
+
+                            <div class="relative">
+                                <textarea 
+                                       name="message" 
+                                       placeholder="Your Message" 
+                                       class="w-full p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300"
+                                       required></textarea>
+                            </div>
+                            
+                            <button type="submit" 
+                                    class="quote-btn w-full">
+                                Send Message
+                            </button>
+                        </form>
+                        
+                        <div id="submissionStatus" class="mt-4 text-center hidden">
+                            <p class="text-green-500 success-message hidden">Message sent successfully! We'll contact you soon.</p>
+                            <p class="text-red-500 error-message hidden">Error sending message. Please try again.</p>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-gray-200">
+                            <div class="flex items-center space-x-4 text-gray-600">
+                                <i class="fas fa-phone text-green-500"></i>
+                                <span>8520087081</span>
+                            </div>
+                            <div class="flex items-center space-x-4 mt-4 text-gray-600">
+                                <i class="fas fa-envelope text-green-500"></i>
+                                <span>rubixenergysystems@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>© 2025 Rubix Solar Energy. All rights reserved.</p>
+            <p class="mt-2">Contact us: rubixenergysystems@gmail.com | 8520087081</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateROI() {
+            const consumption = parseFloat(document.getElementById('consumption').value);
+            if (isNaN(consumption) || consumption < 0) {
+                alert('Please enter a valid monthly consumption value.');
+                return;
+            }
+
+            const dailyGeneration = 13.5;
+            const monthlyGeneration = dailyGeneration * 30;
+            const sixMonthGeneration = monthlyGeneration * 6;
+            const exportRate = 4;
+            const tariffLow = 3;
+            const tariffHigh = 5;
+
+            const sixMonthConsumption = consumption * 6;
+
+            let bill = 0;
+            for (let i = 0; i < 6; i++) {
+                let monthlyBill = 0;
+                if (consumption <= 100) {
+                    monthlyBill = consumption * tariffLow;
+                } else {
+                    monthlyBill = (100 * tariffLow) + ((consumption - 100) * tariffHigh);
+                }
+                bill += monthlyBill;
+            }
+
+            const monthlyExported = Math.max(0, monthlyGeneration - consumption);
+            const sixMonthExported = monthlyExported * 6;
+            const exportIncome = sixMonthExported * exportRate;
+
+            const totalSavings = bill + exportIncome;
+
+            const resultDiv = document.getElementById('roi-result');
+            resultDiv.innerHTML = `
+                <h3 class="text-xl font-semibold mb-2">Your Solar Savings (6 Months)</h3>
+                <p><strong>Total Units Generated:</strong> ${sixMonthGeneration} units</p>
+                <p><strong>Total Units Consumed:</strong> ${sixMonthConsumption} units</p>
+                <p><strong>Electricity Bill Without Solar:</strong> ₹${bill.toFixed(2)}</p>
+                <p><strong>Units Exported to Grid:</strong> ${sixMonthExported} units</p>
+                <p><strong>Income from Exported Units:</strong> ₹${exportIncome.toFixed(2)}</p>
+                <p><strong>Total Savings/Income:</strong> ₹${totalSavings.toFixed(2)}</p>
+                <p class="mt-2 text-sm text-gray-600">*Based on a 3 kW system generating 12-15 units/day, Telangana tariff rates, and ₹4/unit for exported units.</p>
+            `;
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const statusDiv = document.getElementById('submissionStatus');
+            const successMessage = statusDiv.querySelector('.success-message');
+            const errorMessage = statusDiv.querySelector('.error-message');
+
+            fetch('/contact', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                statusDiv.classList.remove('hidden');
+                if (data.status === 'success') {
+                    successMessage.classList.remove('hidden');
+                    errorMessage.classList.add('hidden');
+                    this.reset(); // Reset form on success
+                } else {
+                    successMessage.classList.add('hidden');
+                    errorMessage.classList.remove('hidden');
+                }
+            })
+            .catch(error => {
+                statusDiv.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                errorMessage.classList.remove('hidden');
+            });
+        });
+
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const statusDiv = document.getElementById('quoteStatus');
+            const successMessage = statusDiv.querySelector('.quote-success-message');
+            const errorMessage = statusDiv.querySelector('.quote-error-message');
+
+            fetch('/send-cost', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    statusDiv.classList.remove('hidden');
+                    successMessage.classList.remove('hidden');
+                    errorMessage.classList.add('hidden');
+                    this.reset(); // Reset form on success
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        statusDiv.classList.add('hidden');
+                        successMessage.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                statusDiv.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                errorMessage.classList.remove('hidden');
+                
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    statusDiv.classList.add('hidden');
+                    errorMessage.classList.add('hidden');
+                }, 5000);
+            });
+        });
+
+        let menuOpen = false;
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn i');
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
+                mobileMenu.classList.add('show');
+                menuBtn.classList.remove('fa-bars');
+                menuBtn.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.remove('show');
+                menuBtn.classList.remove('fa-times');
+                menuBtn.classList.add('fa-bars');
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (menuOpen && !mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                menuOpen = false;
+                mobileMenu.classList.remove('show');
+                const menuIcon = document.querySelector('.mobile-menu-btn i');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const menuIcon = document.querySelector('.mobile-menu-btn i');
+                mobileMenu.classList.remove('show');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('show');
+                const menuIcon = document.querySelector('.mobile-menu-btn i');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                const menuIcon = document.querySelector('.mobile-menu-btn i');
+                mobileMenu.classList.remove('show');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        ScrollReveal().reveal('.fade-in', {
+            delay: 200,
+            duration: 800,
+            distance: '20px',
+            origin: 'bottom'
+        });
+
+        ScrollReveal().reveal('.procedure-card', {
+            delay: 200,
+            duration: 800,
+            interval: 200
+        });
+
+        ScrollReveal().reveal('.benefit-card', {
+            delay: 200,
+            duration: 800,
+            interval: 200
+        });
+
+        ScrollReveal().reveal('.feature-card', {
+            delay: 200,
+            duration: 800,
+            interval: 200
+        });
+
+        ScrollReveal().reveal('.roi-calculator', {
+            delay: 200,
+            duration: 800,
+            interval: 200
+        });
+
+        ScrollReveal().reveal('.contact-form', {
+            delay: 200,
+            duration: 800,
+            interval: 200
+        });
+
+        ScrollReveal().reveal('.video-container', {
+            delay: 200,
+            duration: 800,
+            interval: 200
+        });
+    </script>
+</body>
+</html>
